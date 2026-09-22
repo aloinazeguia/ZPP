@@ -1,0 +1,24 @@
+﻿<Window x:Class="_1.ariketa.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_1.ariketa"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="15">
+        <StackPanel >
+            <!-- FTP Prozesua Abiarazteko Botoia -->
+            <Button x:Name="btnStartFtp" Content="FTP Prozesua Abiarazi" Click="btnStartFtp_Click" Padding="5"/>
+            <!-- Prozesua Hiltzeko Botoia -->
+            <Button x:Name="btnKillFtp" Content="Prozesua Hil" Click="btnKillFtp_Click" Padding="5"/>
+            <!-- Ezabatu den prozesuaren IDa erakusteko Label-a -->
+            <Label x:Name="lblProcessId" Content="Ezabatutako prozesuaren IDa: -" FontWeight="Bold"/>
+            <!-- Sistemako prozesuak kargatzeko Botoia -->
+            <Button x:Name="btnShowProcesses" Content="Sistemako Prozesuak Erakutsi" Click="btnShowProcesses_Click" Padding="5"/>
+            <!-- Sistemako prozesuak erakusteko ComboBox-a -->
+            <ComboBox x:Name="cmbProcesses"/>
+        </StackPanel>
+    </Grid>
+
+</Window>
