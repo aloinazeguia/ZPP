@@ -1,0 +1,14 @@
+/Users/Anetxu/Documents/ZPP/2.ariketa/kalkulagailua/bin/Debug/net10.0/kalkulagailua
+/Users/Anetxu/Documents/ZPP/2.ariketa/kalkulagailua/bin/Debug/net10.0/kalkulagailua.deps.json
+/Users/Anetxu/Documents/ZPP/2.ariketa/kalkulagailua/bin/Debug/net10.0/kalkulagailua.runtimeconfig.json
+/Users/Anetxu/Documents/ZPP/2.ariketa/kalkulagailua/bin/Debug/net10.0/kalkulagailua.dll
+/Users/Anetxu/Documents/ZPP/2.ariketa/kalkulagailua/bin/Debug/net10.0/kalkulagailua.pdb
+/Users/Anetxu/Documents/ZPP/2.ariketa/kalkulagailua/obj/Debug/net10.0/kalkulagailua.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Anetxu/Documents/ZPP/2.ariketa/kalkulagailua/obj/Debug/net10.0/kalkulagailua.AssemblyInfoInputs.cache
+/Users/Anetxu/Documents/ZPP/2.ariketa/kalkulagailua/obj/Debug/net10.0/kalkulagailua.AssemblyInfo.cs
+/Users/Anetxu/Documents/ZPP/2.ariketa/kalkulagailua/obj/Debug/net10.0/kalkulagailua.csproj.CoreCompileInputs.cache
+/Users/Anetxu/Documents/ZPP/2.ariketa/kalkulagailua/obj/Debug/net10.0/kalkulagailua.dll
+/Users/Anetxu/Documents/ZPP/2.ariketa/kalkulagailua/obj/Debug/net10.0/refint/kalkulagailua.dll
+/Users/Anetxu/Documents/ZPP/2.ariketa/kalkulagailua/obj/Debug/net10.0/kalkulagailua.pdb
+/Users/Anetxu/Documents/ZPP/2.ariketa/kalkulagailua/obj/Debug/net10.0/kalkulagailua.genruntimeconfig.cache
+/Users/Anetxu/Documents/ZPP/2.ariketa/kalkulagailua/obj/Debug/net10.0/ref/kalkulagailua.dll
