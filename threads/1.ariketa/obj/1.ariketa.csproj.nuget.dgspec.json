@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/Anetxu/Documents/ZPP/threads/1.ariketa/1.ariketa.csproj": {}
+    "/Users/Anetxu/Documents/ZPP/ZPP/threads/1.ariketa/1.ariketa.csproj": {}
   },
   "projects": {
-    "/Users/Anetxu/Documents/ZPP/threads/1.ariketa/1.ariketa.csproj": {
+    "/Users/Anetxu/Documents/ZPP/ZPP/threads/1.ariketa/1.ariketa.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/Anetxu/Documents/ZPP/threads/1.ariketa/1.ariketa.csproj",
+        "projectUniqueName": "/Users/Anetxu/Documents/ZPP/ZPP/threads/1.ariketa/1.ariketa.csproj",
         "projectName": "1.ariketa",
-        "projectPath": "/Users/Anetxu/Documents/ZPP/threads/1.ariketa/1.ariketa.csproj",
+        "projectPath": "/Users/Anetxu/Documents/ZPP/ZPP/threads/1.ariketa/1.ariketa.csproj",
         "packagesPath": "/Users/Anetxu/.nuget/packages/",
-        "outputPath": "/Users/Anetxu/Documents/ZPP/threads/1.ariketa/obj/",
+        "outputPath": "/Users/Anetxu/Documents/ZPP/ZPP/threads/1.ariketa/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/Anetxu/.nuget/NuGet/NuGet.Config"
