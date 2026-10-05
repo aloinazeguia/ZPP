@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("1.ariketa")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+858f4c7c59f7d0efa7a672f32c04a22d5790c67f")]
 [assembly: System.Reflection.AssemblyProductAttribute("1.ariketa")]
 [assembly: System.Reflection.AssemblyTitleAttribute("1.ariketa")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
