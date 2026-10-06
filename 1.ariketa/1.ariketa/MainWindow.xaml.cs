@@ -49,7 +49,7 @@ namespace _1.ariketa
 
                 // Prozesua amaitu
                 ftpProcess.Kill();
-                ftpProcess = null;
+              
             }
             else
             {

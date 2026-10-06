@@ -8,24 +8,19 @@
     "net10.0-windows": []
   },
   "packageFolders": {
-    "C:\\Users\\Anetxu\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\ik012982i18\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\VisualStudio\\1.ariketa\\1.ariketa\\1.ariketa.csproj",
+      "projectUniqueName": "C:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\1.ariketa\\1.ariketa\\1.ariketa.csproj",
       "projectName": "1.ariketa",
-      "projectPath": "F:\\VisualStudio\\1.ariketa\\1.ariketa\\1.ariketa.csproj",
-      "packagesPath": "C:\\Users\\Anetxu\\.nuget\\packages\\",
-      "outputPath": "F:\\VisualStudio\\1.ariketa\\1.ariketa\\obj\\",
+      "projectPath": "C:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\1.ariketa\\1.ariketa\\1.ariketa.csproj",
+      "packagesPath": "C:\\Users\\ik012982i18\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\1.ariketa\\1.ariketa\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Anetxu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\ik012982i18\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -52,7 +47,7 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.400"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net10.0-windows": {
@@ -77,7 +72,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

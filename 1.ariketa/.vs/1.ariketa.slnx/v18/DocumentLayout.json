@@ -1,14 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\VisualStudio\\1.ariketa\\",
+  "WorkspaceRootPath": "C:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\1.ariketa\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9DF48890-3222-4689-83D6-1B19EB8304F3}|1.ariketa\\1.ariketa.csproj|f:\\visualstudio\\1.ariketa\\1.ariketa\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{9DF48890-3222-4689-83D6-1B19EB8304F3}|1.ariketa\\1.ariketa.csproj|solutionrelative:1.ariketa\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{E7BBB6C6-DFBE-F2E8-140B-2A140A9FE4A4}|1.ariketa\\1.ariketa.csproj|c:\\users\\ik012982i18\\ane\\zpp\\zpp\\1.ariketa\\1.ariketa\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7BBB6C6-DFBE-F2E8-140B-2A140A9FE4A4}|1.ariketa\\1.ariketa.csproj|solutionrelative:1.ariketa\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9DF48890-3222-4689-83D6-1B19EB8304F3}|1.ariketa\\1.ariketa.csproj|f:\\visualstudio\\1.ariketa\\1.ariketa\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DF48890-3222-4689-83D6-1B19EB8304F3}|1.ariketa\\1.ariketa.csproj|solutionrelative:1.ariketa\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E7BBB6C6-DFBE-F2E8-140B-2A140A9FE4A4}|1.ariketa\\1.ariketa.csproj|c:\\users\\ik012982i18\\ane\\zpp\\zpp\\1.ariketa\\1.ariketa\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E7BBB6C6-DFBE-F2E8-140B-2A140A9FE4A4}|1.ariketa\\1.ariketa.csproj|solutionrelative:1.ariketa\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,17 +18,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "F:\\VisualStudio\\1.ariketa\\1.ariketa\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\1.ariketa\\1.ariketa\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "1.ariketa\\MainWindow.xaml.cs",
-              "ToolTip": "F:\\VisualStudio\\1.ariketa\\1.ariketa\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\1.ariketa\\1.ariketa\\MainWindow.xaml.cs",
               "RelativeToolTip": "1.ariketa\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAkwFwAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowDMAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-22T11:25:58.783Z",
               "IsPinned": true,
@@ -36,15 +36,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "F:\\VisualStudio\\1.ariketa\\1.ariketa\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\1.ariketa\\1.ariketa\\MainWindow.xaml",
               "RelativeDocumentMoniker": "1.ariketa\\MainWindow.xaml",
-              "ToolTip": "F:\\VisualStudio\\1.ariketa\\1.ariketa\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\1.ariketa\\1.ariketa\\MainWindow.xaml",
               "RelativeToolTip": "1.ariketa\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-09-22T11:26:10.826Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-22T11:26:10.826Z"
             }
           ]
         }
