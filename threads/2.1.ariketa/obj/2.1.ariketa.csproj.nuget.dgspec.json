@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\Threads\\2.1.ariketa\\2.1.ariketa.csproj": {}
+    "C:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\Threads\\2.1.ariketa\\2.1.ariketa.csproj": {}
   },
   "projects": {
-    "c:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\Threads\\2.1.ariketa\\2.1.ariketa.csproj": {
+    "C:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\Threads\\2.1.ariketa\\2.1.ariketa.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\Threads\\2.1.ariketa\\2.1.ariketa.csproj",
+        "projectUniqueName": "C:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\Threads\\2.1.ariketa\\2.1.ariketa.csproj",
         "projectName": "2.1.ariketa",
-        "projectPath": "c:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\Threads\\2.1.ariketa\\2.1.ariketa.csproj",
+        "projectPath": "C:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\Threads\\2.1.ariketa\\2.1.ariketa.csproj",
         "packagesPath": "C:\\Users\\ik012982i18\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\Threads\\2.1.ariketa\\obj\\",
+        "outputPath": "C:\\Users\\ik012982i18\\ane\\ZPP\\ZPP\\Threads\\2.1.ariketa\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ik012982i18\\AppData\\Roaming\\NuGet\\NuGet.Config",
