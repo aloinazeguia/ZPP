@@ -31,6 +31,7 @@
     {
         Thread h1=new Thread(() => Batuketa(3,5, out emaitzah1));
         Thread h2=new Thread(() => biderketa(4,6, out emaitzah2));
+        Thread h3=new Thread(() => BiakBatu(emaitzah1,emaitzah2));
         
         
         h1.Start();
@@ -40,7 +41,6 @@
         h2.Join();
 
         
-        Thread h3=new Thread(() => BiakBatu(emaitzah1,emaitzah2));
         h3.Start();
         h3.Join();
 
