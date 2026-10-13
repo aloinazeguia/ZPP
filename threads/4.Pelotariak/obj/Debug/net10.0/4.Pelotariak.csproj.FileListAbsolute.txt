@@ -1,0 +1,15 @@
+/Users/Anetxu/zubiri/ZPP/ZPP/threads/4.Pelotariak/bin/Debug/net10.0/4.Pelotariak
+/Users/Anetxu/zubiri/ZPP/ZPP/threads/4.Pelotariak/bin/Debug/net10.0/4.Pelotariak.deps.json
+/Users/Anetxu/zubiri/ZPP/ZPP/threads/4.Pelotariak/bin/Debug/net10.0/4.Pelotariak.runtimeconfig.json
+/Users/Anetxu/zubiri/ZPP/ZPP/threads/4.Pelotariak/bin/Debug/net10.0/4.Pelotariak.dll
+/Users/Anetxu/zubiri/ZPP/ZPP/threads/4.Pelotariak/bin/Debug/net10.0/4.Pelotariak.pdb
+/Users/Anetxu/zubiri/ZPP/ZPP/threads/4.Pelotariak/obj/Debug/net10.0/4.Pelotariak.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Anetxu/zubiri/ZPP/ZPP/threads/4.Pelotariak/obj/Debug/net10.0/4.Pelotariak.AssemblyInfoInputs.cache
+/Users/Anetxu/zubiri/ZPP/ZPP/threads/4.Pelotariak/obj/Debug/net10.0/4.Pelotariak.AssemblyInfo.cs
+/Users/Anetxu/zubiri/ZPP/ZPP/threads/4.Pelotariak/obj/Debug/net10.0/4.Pelotariak.csproj.CoreCompileInputs.cache
+/Users/Anetxu/zubiri/ZPP/ZPP/threads/4.Pelotariak/obj/Debug/net10.0/4.Pelotariak.sourcelink.json
+/Users/Anetxu/zubiri/ZPP/ZPP/threads/4.Pelotariak/obj/Debug/net10.0/4.Pelotariak.dll
+/Users/Anetxu/zubiri/ZPP/ZPP/threads/4.Pelotariak/obj/Debug/net10.0/refint/4.Pelotariak.dll
+/Users/Anetxu/zubiri/ZPP/ZPP/threads/4.Pelotariak/obj/Debug/net10.0/4.Pelotariak.pdb
+/Users/Anetxu/zubiri/ZPP/ZPP/threads/4.Pelotariak/obj/Debug/net10.0/4.Pelotariak.genruntimeconfig.cache
+/Users/Anetxu/zubiri/ZPP/ZPP/threads/4.Pelotariak/obj/Debug/net10.0/ref/4.Pelotariak.dll
