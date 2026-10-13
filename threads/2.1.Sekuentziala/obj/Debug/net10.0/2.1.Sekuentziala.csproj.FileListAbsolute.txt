@@ -1,0 +1,15 @@
+/Users/Anetxu/Documents/ZPP/ZPP/threads/2.1.Sekuentziala/bin/Debug/net10.0/2.1.Sekuentziala
+/Users/Anetxu/Documents/ZPP/ZPP/threads/2.1.Sekuentziala/bin/Debug/net10.0/2.1.Sekuentziala.deps.json
+/Users/Anetxu/Documents/ZPP/ZPP/threads/2.1.Sekuentziala/bin/Debug/net10.0/2.1.Sekuentziala.runtimeconfig.json
+/Users/Anetxu/Documents/ZPP/ZPP/threads/2.1.Sekuentziala/bin/Debug/net10.0/2.1.Sekuentziala.dll
+/Users/Anetxu/Documents/ZPP/ZPP/threads/2.1.Sekuentziala/bin/Debug/net10.0/2.1.Sekuentziala.pdb
+/Users/Anetxu/Documents/ZPP/ZPP/threads/2.1.Sekuentziala/obj/Debug/net10.0/2.1.Sekuentziala.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Anetxu/Documents/ZPP/ZPP/threads/2.1.Sekuentziala/obj/Debug/net10.0/2.1.Sekuentziala.AssemblyInfoInputs.cache
+/Users/Anetxu/Documents/ZPP/ZPP/threads/2.1.Sekuentziala/obj/Debug/net10.0/2.1.Sekuentziala.AssemblyInfo.cs
+/Users/Anetxu/Documents/ZPP/ZPP/threads/2.1.Sekuentziala/obj/Debug/net10.0/2.1.Sekuentziala.csproj.CoreCompileInputs.cache
+/Users/Anetxu/Documents/ZPP/ZPP/threads/2.1.Sekuentziala/obj/Debug/net10.0/2.1.Sekuentziala.sourcelink.json
+/Users/Anetxu/Documents/ZPP/ZPP/threads/2.1.Sekuentziala/obj/Debug/net10.0/2.1.Sekuentziala.dll
+/Users/Anetxu/Documents/ZPP/ZPP/threads/2.1.Sekuentziala/obj/Debug/net10.0/refint/2.1.Sekuentziala.dll
+/Users/Anetxu/Documents/ZPP/ZPP/threads/2.1.Sekuentziala/obj/Debug/net10.0/2.1.Sekuentziala.pdb
+/Users/Anetxu/Documents/ZPP/ZPP/threads/2.1.Sekuentziala/obj/Debug/net10.0/2.1.Sekuentziala.genruntimeconfig.cache
+/Users/Anetxu/Documents/ZPP/ZPP/threads/2.1.Sekuentziala/obj/Debug/net10.0/ref/2.1.Sekuentziala.dll
