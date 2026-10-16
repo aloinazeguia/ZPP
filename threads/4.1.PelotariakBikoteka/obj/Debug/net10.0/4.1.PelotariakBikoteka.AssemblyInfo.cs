@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("4.1.PelotariakBikoteka")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d93089e98cec842decafb5e869676d134817ee91")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+934cd37bab76c34a817c480e537b0fcfbda0d15c")]
 [assembly: System.Reflection.AssemblyProductAttribute("4.1.PelotariakBikoteka")]
 [assembly: System.Reflection.AssemblyTitleAttribute("4.1.PelotariakBikoteka")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
