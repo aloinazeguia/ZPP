@@ -1,0 +1,15 @@
+C:\Users\ik012982i18\ane\ZPP\ZPP\threads\4.bis\bin\Debug\net10.0\4.bis.exe
+C:\Users\ik012982i18\ane\ZPP\ZPP\threads\4.bis\bin\Debug\net10.0\4.bis.deps.json
+C:\Users\ik012982i18\ane\ZPP\ZPP\threads\4.bis\bin\Debug\net10.0\4.bis.runtimeconfig.json
+C:\Users\ik012982i18\ane\ZPP\ZPP\threads\4.bis\bin\Debug\net10.0\4.bis.dll
+C:\Users\ik012982i18\ane\ZPP\ZPP\threads\4.bis\bin\Debug\net10.0\4.bis.pdb
+C:\Users\ik012982i18\ane\ZPP\ZPP\threads\4.bis\obj\Debug\net10.0\4.bis.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ik012982i18\ane\ZPP\ZPP\threads\4.bis\obj\Debug\net10.0\4.bis.AssemblyInfoInputs.cache
+C:\Users\ik012982i18\ane\ZPP\ZPP\threads\4.bis\obj\Debug\net10.0\4.bis.AssemblyInfo.cs
+C:\Users\ik012982i18\ane\ZPP\ZPP\threads\4.bis\obj\Debug\net10.0\4.bis.csproj.CoreCompileInputs.cache
+C:\Users\ik012982i18\ane\ZPP\ZPP\threads\4.bis\obj\Debug\net10.0\4.bis.sourcelink.json
+C:\Users\ik012982i18\ane\ZPP\ZPP\threads\4.bis\obj\Debug\net10.0\4.bis.dll
+C:\Users\ik012982i18\ane\ZPP\ZPP\threads\4.bis\obj\Debug\net10.0\refint\4.bis.dll
+C:\Users\ik012982i18\ane\ZPP\ZPP\threads\4.bis\obj\Debug\net10.0\4.bis.pdb
+C:\Users\ik012982i18\ane\ZPP\ZPP\threads\4.bis\obj\Debug\net10.0\4.bis.genruntimeconfig.cache
+C:\Users\ik012982i18\ane\ZPP\ZPP\threads\4.bis\obj\Debug\net10.0\ref\4.bis.dll
