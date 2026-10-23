@@ -6,6 +6,8 @@
     // 2. Aldagai partekatuak (Etxearen egoera)
     private static int aulkiLibreak = 4;
     private static int zerbitzatzekoZainDaudenIpotxak = 0;
+    private static readonly Queue<int> ipotxenFila = new Queue<int>();
+
 
     static void Main(string[] args)
     {
@@ -44,10 +46,19 @@
                 while (aulkiLibreak == 0)
                 {
                     Console.WriteLine($"[{id}. Ipotxa] Ez dago aulkirik libre. Kanpoan zain...");
-                    Monitor.Wait(etxeaLock); 
+                    Monitor.Wait(etxeaLock);
+                }
+
+                // Ipotxa fila batean sartu eta bere turnua itxaron
+                ipotxenFila.Enqueue(id);
+                while (ipotxenFila.Peek() != id)
+                {
+                    Console.WriteLine($"[{id}. Ipotxa] Espero mi turno para sentarme...");
+                    Monitor.Wait(etxeaLock);
                 }
 
                 // Aulkia hartu
+                ipotxenFila.Dequeue();
                 aulkiLibreak--;
                 zerbitzatzekoZainDaudenIpotxak++;
                 Console.WriteLine($"[{id}. Ipotxa] 'Edurnezuri, eseri naiz, zerbitzatu nazazu mesedez!'\nAulki libreak:{aulkiLibreak}");
@@ -62,15 +73,6 @@
                 {
                     Monitor.Wait(etxeaLock);
                 }
-
-                // Console.WriteLine($"[{id}. Ipotxa] Jaten hasi da... Goxoa!");
-
-                //   Thread.Sleep(random.Next(1000, 2000));
-                //     aulkiLibreak++;
-                // Console.WriteLine($"[{id}. Ipotxa] Jaten amaitu du. Aulkia libre utzi du\nAulki libreak:{aulkiLibreak}");
-                
-                // // Beste ipotxei edo Edurnezuriri abisatu egoera aldatu dela
-                // Monitor.PulseAll(etxeaLock);
             }
 
             // Jaten ari da (Blokeotik KANPO, Edurnezurik beste batzuei zerbitzatu ahal izateko)
