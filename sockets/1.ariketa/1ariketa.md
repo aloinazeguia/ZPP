@@ -1,6 +1,6 @@
 Aquí tienes la traducción completa al español:
 
-CLIENTE
+BEZEROA
 
 El cliente crea un socket de conexión para establecer la comunicación con el servidor.
 
@@ -18,7 +18,7 @@ El cliente vuelve a solicitar una frase al usuario.
 
 El programa finaliza cuando la frase a evaluar contiene la palabra "AMAIERA" (FIN). En ese caso, el cliente avisa al servidor y los sockets y buffers deben cerrarse de forma ordenada.
 
-SERVIDOR
+ZERBITZARIA
 
 El servidor crea el socket de conexión TCP (con una IP local y el puerto 13000).
 

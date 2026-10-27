@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ik012982i18\\ane\\ZPP\\socket\\Bezeroa\\Bezeroa.csproj": {}
+    "/Users/Anetxu/zubiri/ZPP/ZPP/sockets/1.ariketa/Bezeroa/Bezeroa.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ik012982i18\\ane\\ZPP\\socket\\Bezeroa\\Bezeroa.csproj": {
+    "/Users/Anetxu/zubiri/ZPP/ZPP/sockets/1.ariketa/Bezeroa/Bezeroa.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ik012982i18\\ane\\ZPP\\socket\\Bezeroa\\Bezeroa.csproj",
+        "projectUniqueName": "/Users/Anetxu/zubiri/ZPP/ZPP/sockets/1.ariketa/Bezeroa/Bezeroa.csproj",
         "projectName": "Bezeroa",
-        "projectPath": "C:\\Users\\ik012982i18\\ane\\ZPP\\socket\\Bezeroa\\Bezeroa.csproj",
-        "packagesPath": "C:\\Users\\ik012982i18\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ik012982i18\\ane\\ZPP\\socket\\Bezeroa\\obj\\",
+        "projectPath": "/Users/Anetxu/zubiri/ZPP/ZPP/sockets/1.ariketa/Bezeroa/Bezeroa.csproj",
+        "packagesPath": "/Users/Anetxu/.nuget/packages/",
+        "outputPath": "/Users/Anetxu/zubiri/ZPP/ZPP/sockets/1.ariketa/Bezeroa/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ik012982i18\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/Anetxu/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -41,7 +39,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
@@ -63,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.401/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
