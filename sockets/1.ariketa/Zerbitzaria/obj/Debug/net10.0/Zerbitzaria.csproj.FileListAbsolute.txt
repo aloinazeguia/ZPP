@@ -1,0 +1,14 @@
+C:\Users\ik012982i18\ane\ZPP\socket\Zerbitzaria\obj\Debug\net10.0\Zerbitzaria.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ik012982i18\ane\ZPP\socket\Zerbitzaria\obj\Debug\net10.0\Zerbitzaria.AssemblyInfoInputs.cache
+C:\Users\ik012982i18\ane\ZPP\socket\Zerbitzaria\obj\Debug\net10.0\Zerbitzaria.AssemblyInfo.cs
+C:\Users\ik012982i18\ane\ZPP\socket\Zerbitzaria\obj\Debug\net10.0\Zerbitzaria.csproj.CoreCompileInputs.cache
+C:\Users\ik012982i18\ane\ZPP\socket\Zerbitzaria\bin\Debug\net10.0\Zerbitzaria.exe
+C:\Users\ik012982i18\ane\ZPP\socket\Zerbitzaria\bin\Debug\net10.0\Zerbitzaria.deps.json
+C:\Users\ik012982i18\ane\ZPP\socket\Zerbitzaria\bin\Debug\net10.0\Zerbitzaria.runtimeconfig.json
+C:\Users\ik012982i18\ane\ZPP\socket\Zerbitzaria\bin\Debug\net10.0\Zerbitzaria.dll
+C:\Users\ik012982i18\ane\ZPP\socket\Zerbitzaria\bin\Debug\net10.0\Zerbitzaria.pdb
+C:\Users\ik012982i18\ane\ZPP\socket\Zerbitzaria\obj\Debug\net10.0\Zerbitzaria.dll
+C:\Users\ik012982i18\ane\ZPP\socket\Zerbitzaria\obj\Debug\net10.0\refint\Zerbitzaria.dll
+C:\Users\ik012982i18\ane\ZPP\socket\Zerbitzaria\obj\Debug\net10.0\Zerbitzaria.pdb
+C:\Users\ik012982i18\ane\ZPP\socket\Zerbitzaria\obj\Debug\net10.0\Zerbitzaria.genruntimeconfig.cache
+C:\Users\ik012982i18\ane\ZPP\socket\Zerbitzaria\obj\Debug\net10.0\ref\Zerbitzaria.dll

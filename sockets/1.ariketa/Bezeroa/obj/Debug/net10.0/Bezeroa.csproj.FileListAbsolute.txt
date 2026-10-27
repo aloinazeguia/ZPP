@@ -1,0 +1,14 @@
+C:\Users\ik012982i18\ane\ZPP\socket\Bezeroa\bin\Debug\net10.0\Bezeroa.exe
+C:\Users\ik012982i18\ane\ZPP\socket\Bezeroa\bin\Debug\net10.0\Bezeroa.deps.json
+C:\Users\ik012982i18\ane\ZPP\socket\Bezeroa\bin\Debug\net10.0\Bezeroa.runtimeconfig.json
+C:\Users\ik012982i18\ane\ZPP\socket\Bezeroa\bin\Debug\net10.0\Bezeroa.dll
+C:\Users\ik012982i18\ane\ZPP\socket\Bezeroa\bin\Debug\net10.0\Bezeroa.pdb
+C:\Users\ik012982i18\ane\ZPP\socket\Bezeroa\obj\Debug\net10.0\Bezeroa.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ik012982i18\ane\ZPP\socket\Bezeroa\obj\Debug\net10.0\Bezeroa.AssemblyInfoInputs.cache
+C:\Users\ik012982i18\ane\ZPP\socket\Bezeroa\obj\Debug\net10.0\Bezeroa.AssemblyInfo.cs
+C:\Users\ik012982i18\ane\ZPP\socket\Bezeroa\obj\Debug\net10.0\Bezeroa.csproj.CoreCompileInputs.cache
+C:\Users\ik012982i18\ane\ZPP\socket\Bezeroa\obj\Debug\net10.0\Bezeroa.dll
+C:\Users\ik012982i18\ane\ZPP\socket\Bezeroa\obj\Debug\net10.0\refint\Bezeroa.dll
+C:\Users\ik012982i18\ane\ZPP\socket\Bezeroa\obj\Debug\net10.0\Bezeroa.pdb
+C:\Users\ik012982i18\ane\ZPP\socket\Bezeroa\obj\Debug\net10.0\Bezeroa.genruntimeconfig.cache
+C:\Users\ik012982i18\ane\ZPP\socket\Bezeroa\obj\Debug\net10.0\ref\Bezeroa.dll
