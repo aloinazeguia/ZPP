@@ -4,6 +4,10 @@ using System.Text;
 
 namespace Zerbitzaria;
 
+// Bezero bakoitzaren informazioa gordetzen duen klasea.
+// Id: bezeroaren identifikatzailea.
+// Socket: konektatutako TCP socket-a.
+// Saiakerak: bezeroak egindako saiakera kopurua.
 public class BezeroInfo
 {
     public int Id { get; set; }
@@ -11,6 +15,12 @@ public class BezeroInfo
     public int Saiakerak { get; set; }
 }
 
+// Partida baten egoera eta logika printzipalak kudeatzen ditu.
+// Zenbakia: zerbitzariak ezkutuan gordetako zenbakia.
+// Partaideak: partidako bezero guztiak.
+// IrabazleaId: irabazlea identifikatzeko balio duen ID.
+// Amaituta: partida amaituta dagoen ala ez.
+// Lock: partidak aldi berean hainbat thread-ek erabiltzeko kateatzea.
 public class Partida
 {
     public int Zenbakia { get; set; }
@@ -21,9 +31,11 @@ public class Partida
 
     public Partida()
     {
+        // Partida berri bakoitzean zenbaki ausazkoa sortzen da 1 eta 100 artean.
         Zenbakia = new Random().Next(1, 101);
     }
 
+    // Bezero berria partida erregistroan sartzen da.
     public void Erregistratu(BezeroInfo bezero)
     {
         lock (Lock)
@@ -32,6 +44,7 @@ public class Partida
         }
     }
 
+    // Partida berrabiarazten da, zenbakia berriro sortzeko eta egoera berrezartzeko.
     public void Reset()
     {
         lock (Lock)
@@ -42,6 +55,9 @@ public class Partida
         }
     }
 
+    // Bezeroak bidaltzen duen zenbakia ebaluatzen da.
+    // mezua: zerbitzariak bezeroari itzultzen dion emaitza.
+    // irabazi: bezeroak zenbakia asmatu duen ala ez adierazten du.
     public bool EginZehaztapena(BezeroInfo bezero, int zenbakia, out string mezua, out bool irabazi)
     {
         lock (Lock)
@@ -54,6 +70,7 @@ public class Partida
                 return false;
             }
 
+            // Saiakera bat gertatu da; kontatzen da.
             bezero.Saiakerak++;
 
             if (zenbakia < Zenbakia)
@@ -68,6 +85,7 @@ public class Partida
                 return true;
             }
 
+            // Zenbakia asmatu bada, partida amaituta egongo da.
             Amaituta = true;
             IrabazleaId = bezero.Id;
             irabazi = true;
@@ -77,8 +95,11 @@ public class Partida
     }
 }
 
+// Zerbitzari nagusia: konekzioak onartzen ditu eta thread bakoitzerako bezeroa kudeatzen du.
 public class Zerbitzaria
 {
+    // 5555 portuan entzuten du,
+    // IPAddress.Any erabilita, edozein interfaze lokaletik konektatu daiteke.
     private readonly TcpListener _listener = new(IPAddress.Any, 5555);
     private readonly Partida _partida = new();
     private readonly object _bezeroakLock = new();
@@ -95,6 +116,7 @@ public class Zerbitzaria
 
             try
             {
+                // Bezero berria konektatzen den zain egongo da.
                 socket = await _listener.AcceptTcpClientAsync();
             }
             catch (ObjectDisposedException)
@@ -102,6 +124,7 @@ public class Zerbitzaria
                 break;
             }
 
+            // Partidako bezero kopurua muga egiaztatzen da.
             lock (_bezeroakLock)
             {
                 if (_partida.Partaideak.Count >= 3)
@@ -110,13 +133,13 @@ public class Zerbitzaria
                     {
                         AutoFlush = true
                     };
-                    writer.WriteLine("Zerbitzaria beteta dago. Gehienez 5 bezero konekta daitezke.");
+                    writer.WriteLine("Zerbitzaria beteta dago.\n Gehienez 3 bezero konekta daitezke.");
                     socket.Close();
                     continue;
                 }
-               
             }
 
+            // Bezero berria sortu eta partida erregistroan sartu.
             var bezero = new BezeroInfo
             {
                 Id = _hurrengoBezeroId++,
@@ -127,19 +150,20 @@ public class Zerbitzaria
             _partida.Erregistratu(bezero);
             Console.WriteLine($"Bezero {bezero.Id} konektatu da.");
 
+            // Bezero bakoitzarentzat thread berezi bat sortzen da, datuak prozesatzeko.
             var thread = new Thread(() => Data(bezero));
             thread.IsBackground = true;
             thread.Start();
         }
     }
 
+    // Bezeroari bidali beharreko zenbakia eta mezua erregistratzeko metodoa.
     public void BidaliZenbakia(BezeroInfo bezero, int zenbakia, string mezua)
     {
         Console.WriteLine($"Bezero {bezero.Id}-ren zenbakia: {zenbakia} => {mezua}");
-       
-       
     }
 
+    // Bezero bakoitzarekin elkarrizketa eta partida logika egiten duen metodoa.
     public void Data(BezeroInfo bezero)
     {
         using var stream = bezero.Socket.GetStream();
@@ -151,27 +175,31 @@ public class Zerbitzaria
 
         try
         {
-            writer.WriteLine($"Kaixo! Zure identifikatzailea: {bezero.Id}. 1 eta 100 arteko zenbakia asmatu.");
-
+            // Bezeroari partida_hasierako mezu bat bidaltzen zaio.
+            writer.WriteLine($"Kaixo! Zure identifikatzailea: {bezero.Id}.");
+            writer.WriteLine("Jokoa 1 eta 100 arteko zenbakia asmatu behar duzu. Saiatu zenbat saiakeratan asmatu dezakezun.");
             while (true)
             {
+                // Bezeroak bidali duen lerroa irakurtzen da.
                 var lerroa = reader.ReadLine();
                 if (lerroa is null)
                 {
                     break;
                 }
 
+                // Zenbakia baliozkoa dela egiaztatzen da.
                 if (!int.TryParse(lerroa, out var zenbakia) || zenbakia < 1 || zenbakia > 100)
                 {
                     writer.WriteLine("Errorea: 1 eta 100 arteko zenbaki bat sartu behar duzu.");
                     continue;
                 }
 
+                // Zenbakia ebaluatu eta emaitza kalkulatzen da.
                 var jarraitu = _partida.EginZehaztapena(bezero, zenbakia, out var mezua, out var irabazi);
-                BidaliZenbakia(bezero, zenbakia,mezua);
+                BidaliZenbakia(bezero, zenbakia, mezua);
                 writer.WriteLine(mezua);
-                
 
+                // Erabiltzaileak asmatu badu, jokaldia amaituko da.
                 if (irabazi)
                 {
                     int irabazleaId;
@@ -185,6 +213,7 @@ public class Zerbitzaria
                         partaideak = _partida.Partaideak.ToList();
                     }
 
+                    // Beste jokalariei ere informazioa bidaltzen zaie partida amaituta dagoela.
                     foreach (var jokalari in partaideak)
                     {
                         if (jokalari.Id == bezero.Id)
@@ -211,6 +240,7 @@ public class Zerbitzaria
                     break;
                 }
 
+                // Jarraitu behar ez bada, itxi eta amaitu.
                 if (!jarraitu)
                 {
                     break;
