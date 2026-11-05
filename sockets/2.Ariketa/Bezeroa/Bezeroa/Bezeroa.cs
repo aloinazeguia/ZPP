@@ -37,7 +37,7 @@ public static class Program
             };
 
             // Zerbitzariak bidaltzen duen ongietorria irakurtzen da.
-            var bienvenida = reader.ReadLine();
+            var bienvenida = reader.ReadLine();// Kaixo! Zure identifikatzailea: X gordetzen du. Jokoa 1 eta 100 arteko zenbakia asmatu behar duzu. Saiatu zenbat saiakeratan asmatu dezakezun.
             if (string.IsNullOrWhiteSpace(bienvenida))
             {
                 Console.WriteLine("Ezin izan da zerbitzariarekin konektatu.");
@@ -45,6 +45,26 @@ public static class Program
             }
 
             Console.WriteLine(bienvenida);
+
+            if (bienvenida.Contains("Zerbitzaria beteta", StringComparison.OrdinalIgnoreCase))
+            {
+                var xehetasunak = reader.ReadLine();
+                if (xehetasunak is not null)
+                {
+                    Console.WriteLine(xehetasunak);//Zerbitzaria beteta dago. Gehienez 3 bezero konekta daitezke.
+                }
+
+                return;
+            }
+
+            var argibideak = reader.ReadLine();//1 eta 100 arteko zenbakia asmatu behar duzu. Saiatu zenbat saiakeratan asmatu dezakezun.
+            if (argibideak is null)
+            {
+                Console.WriteLine("Zerbitzariak konexioa itxi du.");
+                return;
+            }
+
+            Console.WriteLine(argibideak);
 
             // Partidaren egoera erregistratzen da kasu honetan saiakerak bakarrik.
             var partida = new BezeroPartida();
@@ -87,7 +107,7 @@ public static class Program
                         erantzuna.Contains("Jokoa amaituta da", StringComparison.OrdinalIgnoreCase) ||
                         erantzuna.Contains("Zerbitzaria beteta", StringComparison.OrdinalIgnoreCase))
                     {
-                        Console.WriteLine($"Saiakerak: {partida.Saiakerak}");
+                        Console.WriteLine($"Saiakerak: {partida.Saiakerak}");// Saiakerak erakusten dira.
                         return;
                     }
 
@@ -115,4 +135,3 @@ public static class Program
         }
     }
 }
-
