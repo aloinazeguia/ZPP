@@ -10,6 +10,24 @@ public class BezeroInfo
     public int Id { get; set; }
     public TcpClient Socket { get; set; } = null!;
     public int Saiakerak { get; set; }
+
+    public StreamWriter? Writer { get; set; }
+
+    private readonly object _idazketaLock = new();
+
+    // Mezu bat modu seguruan bidaltzeko.
+    public void Bidali(string mezua)
+    {
+        lock (_idazketaLock)
+        {
+            try
+            {
+                Writer?.WriteLine(mezua);
+            }
+            catch (IOException) { }
+            catch (ObjectDisposedException) { }
+        }
+    }
 }
 
 // Partida baten egoera eta logika printzipalak kudeatzen ditu.
@@ -115,6 +133,11 @@ public class Zerbitzaria
             {
                 break;
             }
+            catch (SocketException)
+            {
+                // AmaituPartida-k _listener.Stop() egin du.
+                break;
+            }
 
             // Partidako bezero kopurua muga egiaztatzen da.
             lock (_bezeroakLock)
@@ -150,10 +173,10 @@ public class Zerbitzaria
     }
 
     // Bezeroari bidali beharreko zenbakia eta mezua erregistratzeko metodoa.
-    public void BidaliZenbakia(BezeroInfo bezero, int zenbakia, string mezua, StreamWriter writer )
+    public void BidaliZenbakia(BezeroInfo bezero, int zenbakia, string mezua)
     {
         Console.WriteLine($"Bezero {bezero.Id}-ren zenbakia: {zenbakia} => {mezua}");
-        writer.WriteLine(mezua);
+        bezero.Bidali(mezua);
     }
 
     // Bezero bakoitzarekin elkarrizketa eta partida logika egiten duen metodoa.
@@ -166,72 +189,44 @@ public class Zerbitzaria
             AutoFlush = true
         };
 
+        // Writer-a bezeroan gordetzen da, beste hilo batetik mezuak bidaltzeko.
+        bezero.Writer = writer;
+
         try
         {
-            // Bezeroari partida_hasierako mezu bat bidaltzen zaio.
-            writer.WriteLine($"Kaixo! Zure identifikatzailea: {bezero.Id}.");
-            writer.WriteLine($"Jokoa 1 eta 100 arteko zenbakia asmatu behar duzu. Saiatu zenbat saiakeratan asmatu dezakezun.");
+            // Bezeroari partida_hasierako mezuak bidaltzen zaizkio.
+            bezero.Bidali($"Kaixo! Zure identifikatzailea: {bezero.Id}.");
+            bezero.Bidali("Jokoa 1 eta 100 arteko zenbakia asmatu behar duzu. Saiatu zenbat saiakeratan asmatu dezakezun.");
+
             while (true)
             {
                 // Bezeroak bidali duen lerroa irakurtzen da.
                 var lerroa = reader.ReadLine();
+
+                // Bezeroa deskonektatu da.
                 if (lerroa is null)
                 {
                     break;
                 }
 
-                // Zenbakia baliozkoa dela egiaztatzen da.
+                // Zenbakia baliozkoa dela egiaztatzen da (defentsa).
                 if (!int.TryParse(lerroa, out var zenbakia) || zenbakia < 1 || zenbakia > 100)
                 {
-                    writer.WriteLine("Errorea: 1 eta 100 arteko zenbaki bat sartu behar duzu.");
+                    bezero.Bidali("Errorea: 1 eta 100 arteko zenbaki bat sartu behar duzu.");
                     continue;
                 }
 
                 // Zenbakia ebaluatu eta emaitza kalkulatzen da.
                 var jarraitu = _partida.EginZehaztapena(bezero, zenbakia, out var mezua, out var irabazi);
-                BidaliZenbakia(bezero, zenbakia, mezua,writer);
-                //writer.WriteLine(mezua);
 
-                // Erabiltzaileak asmatu badu, jokaldia amaituko da.
+                // Erabiltzaileak asmatu badu, partida amaitzen da.
                 if (irabazi)
                 {
-                    int irabazleaId;
-                    int zenbakiIrabazlea;
-                    List<BezeroInfo> partaideak;
-
-                    lock (_partida.Lock)
-                    {
-                        irabazleaId = _partida.IrabazleaId!.Value;
-                        zenbakiIrabazlea = _partida.Zenbakia;
-                        partaideak = _partida.Partaideak.ToList();
-                    }
-
-                    // Beste jokalariei ere informazioa bidaltzen zaie partida amaituta dagoela.
-                    foreach (var jokalari in partaideak)
-                    {
-                        if (jokalari.Id == bezero.Id)
-                        {
-                            continue;
-                        }
-
-                        try
-                        {
-                            using var bestekoStream = jokalari.Socket.GetStream();
-                            using var bestekoWriter = new StreamWriter(bestekoStream, Encoding.UTF8)
-                            {
-                                AutoFlush = true
-                            };
-                            bestekoWriter.WriteLine($"Jokoa amaituta da, zenbakia asmatu dute. Irabazlea: {irabazleaId}. Zenbakia: {zenbakiIrabazlea}.");
-                        }
-                        catch
-                        {
-                            // Besteko bezeroak deskonektatuta egon daitezke.
-                        }
-                    }
-
-                    writer.WriteLine($"Saiakerak: {bezero.Saiakerak}");
+                    AmaituPartida(bezero);
                     break;
                 }
+
+                BidaliZenbakia(bezero, zenbakia, mezua);
 
                 // Jarraitu behar ez bada, itxi eta amaitu.
                 if (!jarraitu)
@@ -244,12 +239,15 @@ public class Zerbitzaria
         {
             Console.WriteLine($"Bezero {bezero.Id} deskonektatu da: {ex.Message}");
         }
+        catch (ObjectDisposedException)
+        {
+            // AmaituPartida-k socket-a itxi du.
+        }
         finally
         {
             try
             {
                 bezero.Socket.Close();
-                
             }
             catch
             {
@@ -263,6 +261,53 @@ public class Zerbitzaria
 
             Console.WriteLine($"Bezero {bezero.Id} amaituta.");
         }
+    }
+
+    // Partida amaitzean: bezero guztiak jakinarazi, socket-ak itxi eta zerbitzaria gelditu.
+    private void AmaituPartida(BezeroInfo irabazlea)
+    {
+        List<BezeroInfo> partaideak;
+        int zenbakia;
+
+        lock (_partida.Lock)
+        {
+            partaideak = _partida.Partaideak.ToList();
+            zenbakia = _partida.Zenbakia;
+        }
+
+        foreach (var jokalari in partaideak)
+        {
+            if (jokalari.Id == irabazlea.Id)
+            {
+                jokalari.Bidali($"Irabazi duzu!! Jokoa amaitu da. Saiakerak: {jokalari.Saiakerak}");
+            }
+            else
+            {
+                jokalari.Bidali(
+                    $"Jokoa amaituta da, zenbakia asmatu dute.\n" +
+                    $"Irabazlea: {irabazlea.Id}. Zenbakia: {zenbakia}.\n" +
+                    $"Zure saiakerak: {jokalari.Saiakerak}");
+            }
+        }
+
+        // Bezero guztien socket-ak itxi.
+        foreach (var jokalari in partaideak)
+        {
+            try
+            {
+                jokalari.Socket.Close();
+            }
+            catch { }
+        }
+
+        // Zerbitzaria gelditu: EntzunAsync-eko AcceptTcpClientAsync desblokeatuko da.
+        try
+        {
+            _listener.Stop();
+        }
+        catch { }
+
+        Console.WriteLine($"Partida amaituta. Irabazlea: {irabazlea.Id}. Zenbakia: {zenbakia}.");
     }
 }
 

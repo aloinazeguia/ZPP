@@ -97,29 +97,28 @@ public static class Program
 
                 // Zerbitzariak itzultzen duen erantzuna irakurtzen da.
                 var erantzuna = reader.ReadLine();
-                while (erantzuna is not null)
+
+                if (erantzuna is null)
                 {
-                    Console.WriteLine(erantzuna);
+                    Console.WriteLine("Zerbitzariak konexioa itxi du.");
+                    return;
+                }
 
-                    // Jokoa amaitzea adierazten duten mezuak kontrolatzen dira.
-                    if (erantzuna.Contains("Irabazi duzu", StringComparison.OrdinalIgnoreCase) ||
-                        erantzuna.Contains("asmatu dute", StringComparison.OrdinalIgnoreCase) ||
-                        erantzuna.Contains("Jokoa amaituta da", StringComparison.OrdinalIgnoreCase) ||
-                        erantzuna.Contains("Zerbitzaria beteta", StringComparison.OrdinalIgnoreCase))
+                Console.WriteLine(erantzuna);
+
+                // Jokoa amaitzea adierazten duten mezuak kontrolatzen dira.
+                if (erantzuna.Contains("Irabazi duzu", StringComparison.OrdinalIgnoreCase) ||
+                    erantzuna.Contains("Jokoa amaituta da", StringComparison.OrdinalIgnoreCase) ||
+                    erantzuna.Contains("Zerbitzaria beteta", StringComparison.OrdinalIgnoreCase))
+                {
+                    // Zerbitzariak gainerako mezuak bidali eta socket-a itxi du.
+                    string? gainerakoa;
+                    while ((gainerakoa = reader.ReadLine()) != null)
                     {
-                        Console.WriteLine($"Saiakerak: {partida.Saiakerak}");// Saiakerak erakusten dira.
-                        return;
+                        Console.WriteLine(gainerakoa);
                     }
 
-                    // Zerbitzariak "Handiagoa" edo "Txikiagoa" bueltatzen badu,
-                    // erabiltzaileak hurrengo saiakera egin ahal izango du.
-                    if (erantzuna.Equals("Handiagoa", StringComparison.OrdinalIgnoreCase) ||
-                        erantzuna.Equals("Txikiagoa", StringComparison.OrdinalIgnoreCase))
-                    {
-                        break;
-                    }
-
-                    erantzuna = reader.ReadLine();
+                    return;
                 }
             }
         }
