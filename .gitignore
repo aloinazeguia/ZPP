@@ -1,0 +1,11 @@
+# Ignorar bin y obj en cualquier subcarpeta
+**/[Bb]in/
+**/[Oo]bj/
+
+# Archivos de entorno e IDEs (Visual Studio / Rider / VS Code)
+.vs/
+.idea/
+*.user
+*.userosscache
+*.sln.docstates
+.DS_Store
