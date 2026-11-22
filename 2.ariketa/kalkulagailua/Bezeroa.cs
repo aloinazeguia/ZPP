@@ -23,7 +23,7 @@ namespace pipe
 
             String mezua = "Kaixo, bezeroa naiz";
             writer.WriteLine(mezua);
-            writer.WriteLine(mezua);
+            
             writer.Flush();
             Console.WriteLine("Mezua bidalita");
 
