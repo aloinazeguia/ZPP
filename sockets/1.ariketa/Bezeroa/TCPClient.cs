@@ -28,24 +28,25 @@ namespace Bezeroa
 
                 while (true) // Erabiltzaileari esaldiak behin eta berriro sartzeko aukera ematen dio.
                 {
-                    Console.Write("esaldia: "); // Erabiltzaileari esaldi bat idazteko eskatzen dio.
-                    string? mensaje = Console.ReadLine(); // Kontsolatik idatzitako esaldia irakurtzen du.
+                    Console.Write("[ESALDIA]: "); // Erabiltzaileari esaldi bat idazteko eskatzen dio.
+                    string? mezua = Console.ReadLine(); // Kontsolatik idatzitako esaldia irakurtzen du.
 
-                    if (string.IsNullOrWhiteSpace(mensaje)) // Sarrera hutsik edo zuriunez soilik osatuta dagoen egiaztatzen du.
+                    if (string.IsNullOrWhiteSpace(mezua)) // Sarrera hutsik edo zuriunez soilik osatuta dagoen egiaztatzen du.
                     { // if blokearen kodea hasten du.
                         continue; // Sarrera hutsarekin jarraitu gabe, hurrengo esaldia eskatzera itzultzen da.
                     }
 
-                    writer.WriteLine(mensaje); // Erabiltzailearen esaldia zerbitzariari bidaltzen dio.
 
-                    string? respuesta = reader.ReadLine(); // Zerbitzariaren erantzuna irakurtzen du.
-                    if (respuesta == null) // Zerbitzariak konexioa itxi edo erantzunik bidali ez duen egiaztatzen du.
+                    writer.WriteLine(mezua); // Erabiltzailearen esaldia zerbitzariari bidaltzen dio.
+
+                    string? erantzuna = reader.ReadLine(); // Zerbitzariaren erantzuna irakurtzen du.
+                    if (erantzuna == null) // Zerbitzariak konexioa itxi edo erantzunik bidali ez duen egiaztatzen du.
                     {
                         break; // Komunikazioa bukatutzat ematen du eta begiztatik ateratzen da.
                     }
-                    Console.WriteLine($"Servidor: {respuesta}"); // Zerbitzariaren erantzuna kontsolan erakusten du.
+                    Console.WriteLine($"[ZERBITZARIA]: {erantzuna}"); // Zerbitzariaren erantzuna kontsolan erakusten du.
 
-                    if (mensaje.Contains("ATERA", StringComparison.OrdinalIgnoreCase)) // Esaldiak ATERA hitza duen egiaztatzen du, maiuskulak bereizi gabe.
+                    if (mezua.Contains("ATERA", StringComparison.OrdinalIgnoreCase)) // Esaldiak ATERA hitza duen egiaztatzen du, maiuskulak bereizi gabe.
                     {
                         Console.WriteLine("Komunikazioa amaitu da."); // Komunikazioa amaituko dela erabiltzaileari jakinarazten dio.
                         break; // Begiztatik ateratzen da, komunikazioa amaitzeko.

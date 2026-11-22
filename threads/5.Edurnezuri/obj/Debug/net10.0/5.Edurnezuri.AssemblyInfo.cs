@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("5.Edurnezuri")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0b122e45a10690a3079d341eb6ba783ad1d610c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22d39bf4d4eb3f2dde5d1368114c599042c894a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("5.Edurnezuri")]
 [assembly: System.Reflection.AssemblyTitleAttribute("5.Edurnezuri")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

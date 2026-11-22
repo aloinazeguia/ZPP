@@ -23,6 +23,7 @@ public class BezeroInfo
             try
             {
                 Writer?.WriteLine(mezua);
+                
             }
             catch (IOException) { }
             catch (ObjectDisposedException) { }

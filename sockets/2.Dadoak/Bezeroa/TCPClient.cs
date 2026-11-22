@@ -1,65 +1,136 @@
-﻿using System; // Oinarrizko motak eta kontsolako eragiketak erabiltzeko.
-using System.IO; // Datu-korronteak irakurri eta idazteko klaseak erabiltzeko.
-using System.Net.Sockets; // TCP bezeroaren eta sare-korrontearen klaseak erabiltzeko.
-using System.Text; // UTF-8 testu-kodifikazioa erabiltzeko.
+﻿using System.Net.Sockets;
+using System.Text;
 
-namespace Bezeroa 
+namespace Bezeroa;
+
+// Bezeroaren informazio orokorra, adibidez bere identifikatzailea.
+public class BezeroInfo
 {
-    public class TCPClient
+    public int Id { get; set; }
+}
+
+// Partida honen egoera gordetzeko klasea.
+// Saiakerak: jokalariak egin dituen saiakera kopurua.
+// Partaideak: partidan parte hartzen duten jokalarien zerrenda.
+public class BezeroPartida
+{
+    public int Saiakerak { get; set; }
+    public List<int> Partaideak { get; } = new();
+}
+
+public static class Program
+{
+    public static void Main()
     {
-        private const string Server = "127.0.0.1"; // Zerbitzariaren IP helbidea gordetzen du.
-        private const int Port = 13000; // Zerbitzariarekin konektatzeko ataka gordetzen du.
-
-        public static void Main()
+        try
         {
-            try
+            // Zerbitzariarekin konexioa sortzen da, localhost-ean eta 5555 portuan.
+            using var client = new TcpClient();
+            client.Connect("127.0.0.1", 5555);
+
+            // I/O fluxua sortu eta kodeketa UTF-8 erabiliz.
+            using var stream = client.GetStream();
+            using var reader = new StreamReader(stream, Encoding.UTF8);
+            using var writer = new StreamWriter(stream, Encoding.UTF8)
             {
-                using TcpClient client = new TcpClient(); // TCP bezero-socket bat sortzen du; amaitzean automatikoki itxiko da.
-                client.Connect(Server, Port); // Zerbitzariaren IP helbidera eta atakara konektatzen da.
+                AutoFlush = true
+            };
 
-                using NetworkStream stream = client.GetStream(); // Bezeroaren eta zerbitzariaren arteko datu-korrontea lortzen du.
-                using StreamReader reader = new StreamReader(stream, Encoding.UTF8); // Sare-korronteko testua UTF-8 formatuan irakurtzeko prestatzen du.
-                using StreamWriter writer = new StreamWriter(stream, Encoding.UTF8) // Sare-korrontera UTF-8 testua idazteko prestatzen du.
+            // Zerbitzariak bidaltzen duen ongietorria irakurtzen da.
+            var bienvenida = reader.ReadLine();// Kaixo! Zure identifikatzailea: X gordetzen du. Jokoa 1 eta 100 arteko zenbakia asmatu behar duzu. Saiatu zenbat saiakeratan asmatu dezakezun.
+            if (string.IsNullOrWhiteSpace(bienvenida))
+            {
+                Console.WriteLine("Ezin izan da zerbitzariarekin konektatu.");
+                return;
+            }
+
+            Console.WriteLine(bienvenida);
+
+            if (bienvenida.Contains("Zerbitzaria beteta", StringComparison.OrdinalIgnoreCase))
+            {
+                var xehetasunak = reader.ReadLine();
+                if (xehetasunak is not null)
                 {
-                    AutoFlush = true // Idatzitako erantzun bakoitza berehala bidaltzea aktibatzen du.
-                };
-                Console.WriteLine($"Zerbitzariarekin konektatuta: {Server}:{Port}"); // Konexioa ezarri dela eta helbidea kontsolan erakusten du.
-                Console.WriteLine("Idatzi esaldiak zerbitzariari bidaltzeko. Idatzi 'ATERA' bukatzeko."); // Erabiltzaileari erabilera-argibideak erakusten dizkio.
+                    Console.WriteLine(xehetasunak);//Zerbitzaria beteta dago. Gehienez 3 bezero konekta daitezke.
+                }
 
-                while (true) // Erabiltzaileari esaldiak behin eta berriro sartzeko aukera ematen dio.
+                return;
+            }
+
+            var argibideak = reader.ReadLine();//1 eta 100 arteko zenbakia asmatu behar duzu. Saiatu zenbat saiakeratan asmatu dezakezun.
+            if (argibideak is null)
+            {
+                Console.WriteLine("Zerbitzariak konexioa itxi du.");
+                return;
+            }
+
+            Console.WriteLine(argibideak);
+
+            // Partidaren egoera erregistratzen da kasu honetan saiakerak bakarrik.
+            var partida = new BezeroPartida();
+
+            // Jokoa amaitu arte jarraituko du.
+            while (true)
+            {
+                //Console.Write("Sartu zenbakia (1-100): ");
+                var sarrera = Console.ReadLine();
+
+                // Sarrerak eduki behar du balio bat; hutsik uztea ez da onartzen.
+                if (string.IsNullOrWhiteSpace(sarrera))
                 {
-                    Console.Write("esaldia: "); // Erabiltzaileari esaldi bat idazteko eskatzen dio.
-                    string? mensaje = Console.ReadLine(); // Kontsolatik idatzitako esaldia irakurtzen du.
+                    Console.WriteLine("Zenbakia ezin da hutsik egon.");
+                    continue;
+                }
 
-                    if (string.IsNullOrWhiteSpace(mensaje)) // Sarrera hutsik edo zuriunez soilik osatuta dagoen egiaztatzen du.
-                    { // if blokearen kodea hasten du.
-                        continue; // Sarrera hutsarekin jarraitu gabe, hurrengo esaldia eskatzera itzultzen da.
-                    }
+                // Zenbakia 1 eta 100 arteko baliozko zenbaki bat izan behar da.
+                if (!int.TryParse(sarrera, out var zenbakia) || zenbakia < 1 || zenbakia > 100)
+                {
+                    Console.WriteLine("Errorea: 1 eta 100 arteko zenbaki bat sartu behar duzu.");
+                    continue;
+                }
 
-                    writer.WriteLine(mensaje); // Erabiltzailearen esaldia zerbitzariari bidaltzen dio.
+                // Saiakera bat egin dela erregistratzen da.
+                partida.Saiakerak++;
 
-                    string? respuesta = reader.ReadLine(); // Zerbitzariaren erantzuna irakurtzen du.
-                    if (respuesta == null) // Zerbitzariak konexioa itxi edo erantzunik bidali ez duen egiaztatzen du.
+                // Zerbitzariari zenbakia bidaltzen zaio.
+                writer.WriteLine(zenbakia);
+
+                // Zerbitzariak itzultzen duen erantzuna irakurtzen da.
+                var erantzuna = reader.ReadLine();
+
+                if (erantzuna is null)
+                {
+                    Console.WriteLine("Zerbitzariak konexioa itxi du.");
+                    return;
+                }
+
+                Console.WriteLine(erantzuna);
+
+                // Jokoa amaitzea adierazten duten mezuak kontrolatzen dira.
+                if (erantzuna.Contains("Irabazi duzu", StringComparison.OrdinalIgnoreCase) ||
+                    erantzuna.Contains("Jokoa amaituta da", StringComparison.OrdinalIgnoreCase) ||
+                    erantzuna.Contains("Zerbitzaria beteta", StringComparison.OrdinalIgnoreCase))
+                {
+                    // Zerbitzariak gainerako mezuak bidali eta socket-a itxi du.
+                    string? gainerakoa;
+                    while ((gainerakoa = reader.ReadLine()) != null)
                     {
-                        break; // Komunikazioa bukatutzat ematen du eta begiztatik ateratzen da.
+                        Console.WriteLine(gainerakoa);
                     }
-                    Console.WriteLine($"Servidor: {respuesta}"); // Zerbitzariaren erantzuna kontsolan erakusten du.
 
-                    if (mensaje.Contains("ATERA", StringComparison.OrdinalIgnoreCase)) // Esaldiak ATERA hitza duen egiaztatzen du, maiuskulak bereizi gabe.
-                    {
-                        Console.WriteLine("Komunikazioa amaitu da."); // Komunikazioa amaituko dela erabiltzaileari jakinarazten dio.
-                        break; // Begiztatik ateratzen da, komunikazioa amaitzeko.
-                    }
+                    return;
                 }
             }
-            catch (Exception ex)
-            { 
-                Console.WriteLine($"Bezeroa: {ex.Message}"); // Errorearen azalpena kontsolan erakusten du.
-            }
-            finally // try amaitzean, errorea gertatu ala ez, exekutatzen den blokea hasten du.
-            {
-                Console.WriteLine("Bezeroak konexioa itxi du.");
-            }
-        } 
+        }
+        catch (SocketException)
+        {
+            // Zerbitzaria ez bada martxan edo konexioa ez bada ezarri, errorea erakusten da.
+            Console.WriteLine("Ezin da zerbitzarira konektatu. Mesedez, zerbitzaria exekutatzen ari dela egiaztatu.");
+        }
+        catch (IOException ex)
+        {
+            // Fluxuarekin edo konexioarekin lotutako irakurketa/idazketa arazoak kudeatzen dira.
+            Console.WriteLine($"Konexio errorea: {ex.Message}");
+        }
     }
 }

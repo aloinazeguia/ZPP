@@ -9,13 +9,13 @@ namespace Zerbitzaria
 {
     public class TCPServidor // TCP bidezko zerbitzariaren klasea definitzen du.
     {
-        private const string ServerIp = "127.0.0.1"; // Zerbitzariak erabiliko duen IP lokala gordetzen du.
-        private const int ServerPort = 13000; // Bezeroek konektatzeko erabiliko duten ataka ezartzen du.
-        
+        private const string ServerIp = "127.0.0.1"; // Zerbitzariak erabiliko duen IP.
+        private const int ServerPort = 13000; // Bezeroek konektatzeko erabiliko duten ataka .
+
 
         public static void Main()
         {
-            int contador = 0; // Bezeroen kontagailua hasieratzen du.
+            int cont = 0; // Bezeroen kontagailua hasieratzen du.
             TcpListener listener = null!; // TCP konexio berriak entzuteko zerbitzaria definitzen du.
 
             try
@@ -29,17 +29,17 @@ namespace Zerbitzaria
                 while (true) // Zerbitzaria etengabe konektatzeko prest mantentzen du.
                 {
                     TcpClient client = listener.AcceptTcpClient(); // Bezero baten konexioa onartu arte itxaroten du.
-                    contador++; // Bezero berri bat konektatzen den bakoitzean kontagailua handitzen du.
-                    Console.WriteLine($"{contador}-bezeroa konektatu da."); // Bezero bat konektatu dela jakinarazten du.
+                    cont++; // Bezero berri bat konektatzen den bakoitzean kontagailua handitzen du.
+                    Console.WriteLine($"{cont}-bezeroa konektatu da."); // Bezero bat konektatu dela jakinarazten du.
 
-                    Thread t = new Thread(() => ControlCliente(client,contador)); // Bezero hori kudeatzeko hari independente bat sortzen du.
+                    Thread t = new Thread(() => ControlCliente(client, cont)); // Bezero hori kudeatzeko hari independente bat sortzen du.
                     //t.IsBackground = true; // Hariak aplikazio nagusiaren amaiera ez blokeatzea ezartzen du.
                     t.Start(); // Bezeroaren kudeaketa-haria martxan jartzen du.
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error en el servidor: {ex.Message}");
+                Console.WriteLine($"Zerbitzariaren errorea: {ex.Message}");
             }
             finally // try amaitzean edo errorea gertatzean exekutatzen den kodea definitzen du.
             {
@@ -48,11 +48,11 @@ namespace Zerbitzaria
             }
         } // Main metodoaren kode-blokea amaitzen du.
 
-        private static void ControlCliente(TcpClient socketCliente,int contador) // Bezero jakin baten komunikazioa kudeatzen du.
+        private static void ControlCliente(TcpClient bezeroSocket, int cont) // Bezero jakin baten komunikazioa kudeatzen du.
         {
             try
             {
-                using NetworkStream stream = socketCliente.GetStream(); // Bezeroarekin datuak trukatzeko sare-korrontea lortzen du.
+                using NetworkStream stream = bezeroSocket.GetStream(); // Bezeroarekin datuak trukatzeko sare-korrontea lortzen du.
                 using StreamReader reader = new StreamReader(stream, Encoding.UTF8); // Korronteko testua UTF-8 formatuan irakurtzeko prestatzen du.
                 using StreamWriter writer = new StreamWriter(stream, Encoding.UTF8) // Korrontean UTF-8 testua idazteko prestatzen du.
                 {
@@ -61,38 +61,46 @@ namespace Zerbitzaria
 
                 while (true) // Bezeroak mezuak bidaltzen jarraitzen duen bitartean irakurtzen du.
                 {
-                    string? mensaje = reader.ReadLine(); // Bezeroaren hurrengo mezua irakurtzen du, edo null konexioa itxita badago.
-                    if (mensaje == null) // Bezeroak konexioa itxi duen egiaztatzen du.
+                    string? mezua = reader.ReadLine(); // Bezeroaren hurrengo mezua irakurtzen du, edo null konexioa itxita badago.
+                    if (mezua == null) // Bezeroak konexioa itxi duen egiaztatzen du.
                     {
                         break; // Bezero honen mezuak irakurtzeari uzten dio.
                     }
 
-                    Console.WriteLine($"{contador}-Bezeroa: {mensaje}"); // Bezeroak bidalitako mezua kontsolan erakusten du.
+                    Console.WriteLine($"[{cont}-BEZEROA]: {mezua}"); // Bezeroak bidalitako mezua kontsolan erakusten du.
 
-                    if (Amaiera(mensaje)) // Mezuak amaiera-adierazleren bat duen egiaztatzen du.
+                    if (Amaiera(mezua)) // Mezuak amaiera-adierazleren bat duen egiaztatzen du.
                     {
                         writer.WriteLine("konexioa amaitu da."); // Bezeroari komunikazioa amaituko dela erantzuten dio.
-                        Console.WriteLine($"{contador}-Bezeroaren komunikazioa amaitu da."); // Bezero honen komunikazioa amaituko dela erakusten du.
+                        Console.WriteLine($"{cont}-Bezeroaren komunikazioa amaitu da."); // Bezero honen komunikazioa amaituko dela erakusten du.
                         break;
                     }
+                    int contBoc = 0;
+                    foreach (char ca in mezua)
+                    {
+                        char c = char.ToLower(ca);
+                        if ((c == 'a') || c == 'e' || c == 'i' || c == 'o' || c == 'u') { contBoc++; }
+                    }
 
-                    int longitud = mensaje.Length; // Jasotako mezuaren karaktere kopurua kalkulatzen du.
-                    writer.WriteLine($"La frase tiene {longitud} caracteres."); // Karaktere kopurua bezeroari bidaltzen dio.
+
+                    int karaktere = mezua.Count(c => "aeiouAEIOU".IndexOf(c) >= 0);
+                    int luzeera = mezua.Trim().Length; // Jasotako mezuaren karaktere kopurua kalkulatzen du.
+                    writer.WriteLine($"Esaldiak {luzeera} Karaktere eta {contBoc}({karaktere}) bokal ditu"); // Karaktere kopurua bezeroari bidaltzen dio.
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error en el cliente: {ex.Message}"); // Bezeroaren errorearen azalpena kontsolan erakusten du.
+                Console.WriteLine($"Bezeroan errorea: {ex.Message}"); // Bezeroaren errorearen azalpena kontsolan erakusten du.
             }
             finally // Bezeroaren komunikazioa amaitzean beti exekutatzen den kodea definitzen du.
             {
-                socketCliente.Close(); // Bezero honen TCP socket-a ixten du.
-                Console.WriteLine($"{contador}-Bezeroa deskonektatu da"); // Bezeroa deskonektatu dela kontsolan erakusten du.
+                bezeroSocket.Close(); // Bezero honen TCP socket-a ixten du.
+                Console.WriteLine($"{cont}-Bezeroa deskonektatu da"); // Bezeroa deskonektatu dela kontsolan erakusten du.
             }
         }
-        private static bool Amaiera(string mensaje) // Mezuak komunikazioa amaitzeko hitza duen aztertzen du.
+        private static bool Amaiera(string mezua) // Mezuak komunikazioa amaitzeko hitza duen aztertzen du.
         { // EsFin metodoaren kode-blokea hasten du.
-            return mensaje.Contains("ATERA", StringComparison.OrdinalIgnoreCase); // ATERA hitza maiuskulak bereizi gabe bilatzen du.
+            return mezua.Contains("ATERA", StringComparison.OrdinalIgnoreCase); // ATERA hitza maiuskulak bereizi gabe bilatzen du.
         }
     }
 }
