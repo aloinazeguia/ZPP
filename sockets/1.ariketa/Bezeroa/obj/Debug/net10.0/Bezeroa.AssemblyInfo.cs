@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bezeroa")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22d39bf4d4eb3f2dde5d1368114c599042c894a3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+240d9c7a474bb95ec524ece1b18421e5659b1cda")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bezeroa")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bezeroa")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

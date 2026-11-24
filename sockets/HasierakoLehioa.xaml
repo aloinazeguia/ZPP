@@ -1,0 +1,92 @@
+<Window x:Class="ZureProiektua.HasierakoLehioa"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="HasierakoLehioa" Height="450" Width="800"
+        Background="#FFF0F0F0">
+    
+    <Grid Margin="25">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Goiko ezkerreko botoiak -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Top">
+            <Button x:Name="btnArrancar"
+                    Content="Arrancando Server"
+                    Width="200"
+                    Height="65"
+                    Margin="0,0,15,0"
+                    FontSize="14"
+                    IsEnabled="False"
+                    Background="#FFF8F8F8"
+                    BorderBrush="#FFE5E5E5" />
+
+            <Button x:Name="btnParar"
+                    Content="Parar Server"
+                    Width="200"
+                    Height="65"
+                    FontSize="14"
+                    Background="#FFF8F8F8"
+                    BorderBrush="#FF0078D7"
+                    BorderThickness="1" />
+        </StackPanel>
+
+        <!-- Beheko ezkerreko mezuen kutxa -->
+        <TextBox x:Name="txtChat"
+                 Grid.Row="1"
+                 Grid.Column="0"
+                 Margin="0,10,20,0"
+                 Padding="5,12,5,5"
+                 FontSize="13"
+                 IsReadOnly="True"
+                 VerticalScrollBarVisibility="Visible"
+                 TextWrapping="Wrap"
+                 Background="#FFF0F0F0"
+                 BorderBrush="#FFABADB3" />
+
+        <!-- Goiko eskuineko logotipoa -->
+        <Image x:Name="imgLogo"
+               Grid.Row="0"
+               Grid.Column="1"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               Height="95"
+               Stretch="Uniform"
+               Source="/Assets/birtlh_logo.png" />
+
+        <!-- Beheko eskuineko bezeroen kontrola -->
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="0,25,0,0">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,18">
+                <Label Content="NumeroClientes:"
+                       FontSize="13"
+                       VerticalAlignment="Center"
+                       Margin="0,0,10,0" />
+                <TextBox x:Name="txtNumeroClientes"
+                         Width="60"
+                         Height="28"
+                         FontSize="13"
+                         IsReadOnly="True"
+                         VerticalContentAlignment="Center"
+                         Padding="4,0"
+                         Background="#FFF0F0F0"
+                         BorderBrush="#FFABADB3" />
+            </StackPanel>
+
+            <ListBox x:Name="lstClientes"
+                     Width="160"
+                     Height="135"
+                     Padding="4,12,4,4"
+                     FontSize="13"
+                     Background="#FFF0F0F0"
+                     BorderBrush="#FFABADB3" />
+        </StackPanel>
+    </Grid>
+</Window>

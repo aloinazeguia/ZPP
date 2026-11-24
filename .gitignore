@@ -8,4 +8,5 @@
 *.user
 *.userosscache
 *.sln.docstates
-.DS_Store
+**/.DS_Store/
+
