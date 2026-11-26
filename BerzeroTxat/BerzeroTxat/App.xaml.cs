@@ -13,5 +13,6 @@ namespace BerzeroTxat
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

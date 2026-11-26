@@ -14,10 +14,12 @@ namespace ZerbitzariaTxat
     {
         private const string ServerIp = "172.0.0.1";
         private const int ServerPort = 2000;
+        private TcpListener listener;
+        private volatile bool martxan = true;
 
         public void ZerbitzariaPiztu()
         {
-            TcpListener listener = null;
+            martxan = true;
             int cont = 0;
             try
             {
@@ -26,13 +28,14 @@ namespace ZerbitzariaTxat
                 listener.Start();
                 Console.WriteLine($"Zerbitzaria martxan dago {ServerIp}:{ServerPort} helbidean.");
 
-                while (true)
+                while (martxan)
                 {
                     TcpClient bezeroa = listener.AcceptTcpClient();
                     cont++;
                     Console.WriteLine($"Bezero berria konektatu da. Konektatutako bezero kopurua: {cont}");
 
                     Thread bezero = new Thread(() => BezeroKontroladorea(bezeroa, cont));
+                    bezero.IsBackground = true;
                     bezero.Start();
 
 

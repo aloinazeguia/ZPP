@@ -17,32 +17,42 @@ using System.Net.Sockets;
 using System.Threading;
 
 using ZerbitzariaTxat;
+using BerzeroTxat;
+
 
 namespace ZerbitzariaTxat
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for HasierakoLehioa.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class HasierakoLehioa : Window
     {
-
-        public MainWindow()
+        private Zerbitzaria zer;
+        private Thread zerbitzariaThread;
+        public HasierakoLehioa()
         {
             InitializeComponent();
         }
 
         private void btnArrancar_Click(object sender, RoutedEventArgs e)
         {
+            btnArrancar.IsEnabled = false;
+            btnArrancar.Content = "Zerbitzaria pizten...";
+            btnParar.IsEnabled = true;
+
+            zer = new Zerbitzaria();
+            zerbitzariaThread = new Thread(zer.ZerbitzariaPiztu);
+            zerbitzariaThread.IsBackground = true;
+            zerbitzariaThread.Start();
+
             Console.WriteLine("Pizten saiatzen");
-            Zerbitzaria zer=new Zerbitzaria();
-            Console.WriteLine("Pizten saiatzen");
-            zer.ZerbitzariaPiztu();
-            Console.WriteLine("Pizten saiatzen");
+            BerzeroTxat.Txata bezeroa = new BerzeroTxat.Txata();
+            bezeroa.Show();
+
         }
 
         private void btnParar_Click(object sender, RoutedEventArgs e)
         {
-
         }
     }
 }

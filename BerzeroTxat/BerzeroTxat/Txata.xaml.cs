@@ -16,15 +16,15 @@ using System.Windows.Shapes;
 namespace BerzeroTxat
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for BezeroTxat.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Txata : Window
     {
         public class Bezero 
         {
 
         }
-        public MainWindow()
+        public Txata()
         {
             InitializeComponent();
         }
