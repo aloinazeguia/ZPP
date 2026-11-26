@@ -20,9 +20,23 @@ namespace BerzeroTxat
     /// </summary>
     public partial class MainWindow : Window
     {
+        public class Bezero 
+        {
+
+        }
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnConectar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDesconectar_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

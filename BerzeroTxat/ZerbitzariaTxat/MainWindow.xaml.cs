@@ -12,6 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
+
+using ZerbitzariaTxat;
 
 namespace ZerbitzariaTxat
 {
@@ -20,9 +25,24 @@ namespace ZerbitzariaTxat
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnArrancar_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Pizten saiatzen");
+            Zerbitzaria zer=new Zerbitzaria();
+            Console.WriteLine("Pizten saiatzen");
+            zer.ZerbitzariaPiztu();
+            Console.WriteLine("Pizten saiatzen");
+        }
+
+        private void btnParar_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

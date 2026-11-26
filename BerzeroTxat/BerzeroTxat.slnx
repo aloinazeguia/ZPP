@@ -1,4 +1,4 @@
 <Solution>
-  <Project Path="BerzeroTxat/BerzeroTxat.csproj" />
-  <Project Path="ZerbitzariaTxat/ZerbitzariaTxat.csproj" />
+  <Project Path="BerzeroTxat/BerzeroTxat.csproj" Id="d1d0444f-ec7a-4275-8eaa-6fef26f5e565" />
+  <Project Path="ZerbitzariaTxat/ZerbitzariaTxat.csproj" Id="f59c852b-4ccf-42f8-ae64-72670cff8ecf" />
 </Solution>
